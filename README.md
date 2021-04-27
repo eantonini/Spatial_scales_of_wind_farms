@@ -1,4 +1,4 @@
-# Power_density_of_large_wind_farms
+# Spatial_scales_of_wind_farms
 
 This repository contains setup files and instructions to reproduce results of the following paper:
 
