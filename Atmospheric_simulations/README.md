@@ -10,22 +10,33 @@ WRF 4.2.1 can be downloaded from https://github.com/wrf-model/WRF/releases/tag/v
 
 Copy `module_initialize_ideal.F` into `$WRF_ROOT_DIRECTORY/dyn_em/`
 
-Copy  `input_sounding`, `namelist.input`, `wind-turbine-1.tbl`, `windturbines-ij-9,0Wm2.txt` (or `windturbines-ij-4,5Wm2.txt`)  into `$WRF_ROOT_DIRECTORY/test/em_convrad/`
+Copy
 
-Then change `windturbines-ij-9,0Wm2.txt` (or `windturbines-ij-4,5Wm2.txt`) to `windturbines-ij.txt`
+* `input_sounding_neutral` (or `input_sounding_conv-neutral`)
+* `doamin1_namelist.input` (or `doamin2_namelist.input`, `doamin3_namelist.input`)
+* `wind-turbine-1.tbl`
+* `domain1_windturbines-ij.txt` (or one of the other `*windturbines-ij.txt` files)
+
+into `$WRF_ROOT_DIRECTORY/test/em_convrad/`
+
+Then change
+
+* `input_sounding_neutral` (or `input_sounding_conv-neutral`) to `input_sounding`
+* `doamin1_namelist.input` (or `doamin2_namelist.input`, `doamin3_namelist.input`) to `namelist.input`
+* `domain1_windturbines-ij.txt` (or one of the other `*windturbines-ij.txt` files) to `windturbines-ij.txt`
 
 
 ## Changing WRF setup files
 
-In the paper, we performed simulations with different combinations of geostrophic winds, Coriolis parameters, and installed capacity density.
+In the paper, we performed simulations with different combinations of geostrophic winds, Coriolis parameters, and layouts.
 
-The setup files included in this repository are for a geostrophic wind of 16 m/s, Coriolis parameter of 1.05 x 10^(-4) rad/s, and installed capacity density of 9 W/m^2.
+The setup files included in this repository are for a geostrophic wind of 12 m/s, Coriolis parameter of 1.05 x 10^(-4) rad/s.
 
 To change the geostrophic wind, insert the desired value in the fourth column of `input_sounding`.
 
 To change the Coriolis parameter, insert the desired value at line 419 of `module_initialize_ideal.F`. Every time `module_initialize_ideal.F` is changed, you must re-compile WRF.
 
-To change the installed capacity density, use either `windturbines-ij-9,0Wm2.txt` or `windturbines-ij-4,5Wm2.txt` for an installed capacity density of 9 or 4.5 W/m^2, respectively.
+To change the layout, select the desired file among the `*windturbines-ij.txt` files.
 
 
 ## Compiling WRF
